@@ -49,7 +49,7 @@
 
 			// moves the Box to a new position on the screen along the X-Axis
 			function moveBoxTo(newPositionX) {
-				box.css("left", newPositionX);
+				box.css("left", newPositionX );
 			}
 
 			// changes the text displayed on the Box
@@ -63,7 +63,9 @@
 			
 			// TODO 2 - Variable declarations 
 			
+			var positionX = 10;
 
+			
 			
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
@@ -71,8 +73,8 @@
 			turn it around! 
 			*/
 			function update() {
-				
-
+				moveBoxTo(positionX);
+				positionX = positionX + 10;
 			};
 
 			/* 
@@ -81,7 +83,7 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				
+				positionX = 0;
 
 
 			};

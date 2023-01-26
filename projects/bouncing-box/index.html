@@ -5,6 +5,7 @@
 	<title>Bouncing Box</title>
 	<script src="jquery.min.js"></script>
 	<style>
+		
 		.box {
 			width: 70px;
 			height: 70px;
@@ -25,6 +26,9 @@
 
 </head>
 <body class="board">
+	<img class = "background-img" src = "images/backgroundImage.png"
+	width="4000" 
+	height="500" />
 	<!-- HTML for the box -->
 	<div class="box">?</div>
 
@@ -42,8 +46,13 @@
 			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
 	
 			// Every 50 milliseconds, call the update Function (see below)
-			setInterval(update, 50);
-			
+
+			var interval = setInterval(update, 50);
+			board.on ('click' , board); 
+				
+			function endGame() {
+    clearInterval(interval);
+}
 			// Every time the box is clicked, call the handleBoxClick Function (see below)
 			box.on('click', handleBoxClick);
 
@@ -116,10 +125,7 @@
                 points = points + 1;
 				speed = speed + 1;
 			};
-			var interval = setInterval(update, 50 );
-			function endGame() {
-    clearInterval(interval);
-}
+		
 		})();
 	</script>
 </body>

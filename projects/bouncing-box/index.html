@@ -6,12 +6,12 @@
 	<script src="jquery.min.js"></script>
 	<style>
 		body {
-		background: url("backgroundImage.png") no-repeat center center fixed;
-		background-color: #cccccc;
-		-webkit-background-size: cover;
-		-moz-background-size: cover;
-		-o-background-size: cover;
+		background-image: url("images/backgroundImage.jpg"); 
+		background-color: #0c90e779;
+		background-repeat: no-repeat;
 		background-size: cover;
+		background-attachment: fixed;
+        background-position: center;
 	}
 		.box {
 			width: 70px;
@@ -137,9 +137,9 @@
             };
 
             function changeBoxColorOnClick(){
-                var color1 = Math.random(0, 78, 25) * 100;
+                var color1 = Math.random(45, 78, 25) * 100;
                 var color2 = Math.random(5, 25, 85) * 100;
-                var color3 = Math.random(0, 65, 255) * 100; 
+                var color3 = Math.random(189, 65, 255) * 150; 
                 var colorStr = "rgb(" + color1 + "," + color2 + ","+ color3 + ")";
                 console.log(color1);
                 console.log(colorStr);

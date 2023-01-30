@@ -51,14 +51,10 @@
 			var board = jQuery('.board');	// reference to the HTML .board element
 			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
 			var randNum = Math.random() * board.width;
+			
 			// Every 50 milliseconds, call the update Function (see below)
-
 			var interval = setInterval(update, 50);
-			board.on ('click' , board); 
-			function endGame() {
-    clearInterval(interval);
-}
-
+		
 			// Every time the box is clicked, call the handleBoxClick Function (see below)
 			box.on('click', handleBoxClick);
 
@@ -85,9 +81,10 @@
 			var positionY = 10;
             var speedY = 1; 
 			var boardHeight = jQuery(window).height(); 
-			var colorStr = "rgb(50, 256, 250)";
-              box.css('background-color', colorStr);
-		
+			var color1;
+			var color2;
+			var color3;
+			
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
@@ -114,13 +111,13 @@
                 }
 
 			};
+
 			/* 
 			This Function will be called each time the box is clicked. Each time it is called,
 			it should increase the points total, increase the speed, and move the box to
 			the left side of the screen.
 			*/
 			
-	
 			function handleBoxClick() {
 				randNum = Math.random() * boardWidth;
                 var randNumY = Math.random() * boardHeight;
@@ -145,8 +142,6 @@
                 console.log(colorStr);
                 box.css('background-color', colorStr);           
             }
-
-            
 
 		})();
 	</script>

@@ -45,6 +45,7 @@ var level01 = function (window) {
                 { "type": "reward", "x": 8000, "y": groundY - 60 },
                
                 { "type": "health", "x": 1000, "y": groundY - 60},
+                { "type": "health", "x": 3600, "y": groundY - 60},
             ]
         };
         window.levelData = levelData;
@@ -189,7 +190,7 @@ var level01 = function (window) {
             }
 
             if(gameItem.type === "fireEnemy"){ // checks the type of game item 
-                createFireEnemy(gameItem.x, gameItem.y);  // if the type is true it executes createEnemy
+                createFireEnemy(gameItem.x, gameItem.y);  // if the type is true it executes createFireEnemy
             }
 
             if(gameItem.type === "reward"){ // checks the type of game item 

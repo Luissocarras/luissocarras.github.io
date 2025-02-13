@@ -42,6 +42,23 @@ function runProgram(){
     speedX: 0,
     speedY: 0,
    }
+   var walker = Walker('#walker', BOARD_WIDTH - WALKER_WIDTH - WALKER_HEIGHT, 0, 0, - BOARD_HEIGHT);
+var walker2 = Walker('#walker2', 0, 0, 0, 0, BOARD_WIDTH - WALKER_WIDTH - WALKER_HEIGHT - BOARD_HEIGHT);
+function Walker(id, xPos, yPos, speedX, speedY, width, height){
+  let obj = {
+id: id,
+xPos: xPos,
+yPos: yPos,
+speedX: speedX,
+speedY: speedY,
+width: width, 
+height: height
+  }
+  return obj;
+}
+
+
+
 
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)

@@ -44,18 +44,7 @@ function runProgram(){
    }
    var walker = Walker('#walker', BOARD_WIDTH - WALKER_WIDTH - WALKER_HEIGHT, 0, 0, - BOARD_HEIGHT);
 var walker2 = Walker('#walker2', 0, 0, 0, 0, BOARD_WIDTH - WALKER_WIDTH - WALKER_HEIGHT - BOARD_HEIGHT);
-function Walker(id, xPos, yPos, speedX, speedY, width, height){
-  let obj = {
-id: id,
-xPos: xPos,
-yPos: yPos,
-speedX: speedX,
-speedY: speedY,
-width: width, 
-height: height
-  }
-  return obj;
-}
+
 
 
 
@@ -77,9 +66,12 @@ height: height
   */
 
   function newFrame() {
-    repositionGameItem();
-    redrawGameItem();
-    wallcollision();
+    repositionGameItem(walker);
+    repositionGameItem(walker2);
+    redrawGameItem(walker);
+    redrawGameItem(walker2);
+    wallcollision(walker);
+    wallcollision(walker2);
   }
     // CORE LOGIC...
   
@@ -154,6 +146,13 @@ height: height
     $("#walker").css('left', walker.x);
     $("#walker").css('top', walker.y);
 }
+function changeColor(){
+  var walkerColor = $("#walker").css("background-color")
+  var walker2Color = $("#walker2").css("background-color")
+  $("#walker").css("background-color", walker2Color);
+  $("#walker2").css("background-color", walkerColor);
+}
+
 
 function doCollide(walker, walker2) {
     // TODO: calculate and store the remaining
@@ -182,40 +181,42 @@ function doCollide(walker, walker2) {
 		
 }
 
-  function repositionGameItem(){
-    walker.xPos += walker.speedX;
-    walker.yPos += walker.speedY;
+  function repositionGameItem(Walker){
+   Walker.xPos += Walker.speedX;
+    Walker.yPos += Walker.speedY;
     
-    walker2.xPos += walker2.speedX;
-    walker2.yPos += walker2.speedY;
   }
   
-  function redrawGameItem(){
-    $("#walker").css("left", walker.xPos);
-    $("#walker").css("top", walker.yPos);
+  function redrawGameItem(Walker){
+    $(Walker.id).css("left", Walker.xPos);
+    $(Walker.id).css("top", Walker.yPos);
     
-     $("#walker2").css("left", walker2.xPos);
-    $("#walker2").css("top", walker2.yPos);
+    
   }
   
-  function wallcollision(){
-    if(walker.xPos > BOARD_WIDTH - WALKER_WIDTH || walker.xPos < 0   ){
-      walker.xPos -= walker.speedX;
+  function wallcollision(Walker){
+    if(Walker.xPos > BOARD_WIDTH - WALKER_WIDTH || Walker.xPos < 0   ){
+      Walker.xPos -= Walker.speedX;
     }
    
-    if(walker.yPos > BOARD_HEIGHT - WALKER_HEIGHT || walker.yPos < 0 ){
-      walker.yPos -= walker.speedY; 
+    if(Walker.yPos > BOARD_HEIGHT - WALKER_HEIGHT || Walker.yPos < 0 ){
+      Walker.yPos -= Walker.speedY; 
     }
     
-    if(walker2.xPos > BOARD_WIDTH - WALKER_WIDTH || walker2.xPos < 0   ){
-      walker2.xPos -= walker2.speedX;
-    }
    
-    if(walker2.yPos > BOARD_HEIGHT - WALKER_HEIGHT || walker2.yPos < 0 ){
-      walker2.yPos -= walker2.speedY; 
-    }
   }
-
+  function Walker(id, xPos, yPos, speedX, speedY, width, height){
+    let obj = {
+  id: id,
+  xPos: xPos,
+  yPos: yPos,
+  speedX: speedX,
+  speedY: speedY,
+  width: width, 
+  height: height
+    }
+    return obj;
+  }
 
   function endGame() {
     // stop the interval timer

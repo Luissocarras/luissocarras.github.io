@@ -4,18 +4,36 @@ body {
 }
 
 #board {
-  width: 440px;
-  height: 440px;
+  width: 900px;
+  height: 500px;
   border: 1px solid white;
   background-color: black;
   position: relative;
 }
-
-#gameItem {
+.paddle {
   background-color: teal;
-  width: 50px;
-  height: 50px;
+  width: 25px;
+  height: 120px;
+  border-radius: 15px;
   position: absolute;
-/*   left: 100px; */  /* Uncomment if you want to set a "starting" position */
-/*   top: 100px;  */  /* Uncomment if you want to set a "starting" position */
+}
+
+#leftPaddle {
+   left: 10px;   /* Uncomment if you want to set a "starting" position */
+   top: 150px;    /* Uncomment if you want to set a "starting" position */
+}
+
+#rightPaddle {
+  left: 866px;   /* Uncomment if you want to set a "starting" position */
+  top: 150px;    /* Uncomment if you want to set a "starting" position */
+}
+
+#ball {
+  background-color: aliceblue;
+  width: 30px;
+  height: 20px;
+  border-radius: 50px;
+  position: absolute;
+  left: 435px;
+  top: 220px;
 }

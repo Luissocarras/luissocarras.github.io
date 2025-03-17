@@ -134,37 +134,8 @@ obj.y += obj.speedY;
 //handle what happens when someone wins//
 //handles points//
 // handle reset of game//
-var randNum = Math.random() * board.width;
-			
-// Every 50 milliseconds, call the update Function (see below)
-var interval = setInterval(update, 50);
-
-// Every time the box is clicked, call the handleBoxClick Function (see below)
-box.on('click', handleBoxClick);
-
-// moves the Box to a new position on the screen along the X-Axis
-function moveBall(x ,  y) {
-  box.css("left", positionX );
-  box.css('top', positionY);
-}
 
 
-
-//////////////////////////////////////////////////////////////////
-/////////////////// YOUR CODE BELOW HERE /////////////////////////
-//////////////////////////////////////////////////////////////////
-
-// TODO 2 - Variable declarations 
-
-var positionX = 10;
-var points = 0;
-var speed = 1;
-var positionY = 10;
-      var speedY = 1; 
-var boardHeight = jQuery(window).height(); 
-var color1;
-var color2;
-var color3;
 
 /* 
 This Function will be called 20 times/second. Each time it is called,

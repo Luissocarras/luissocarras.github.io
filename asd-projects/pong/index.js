@@ -137,32 +137,9 @@ obj.y += obj.speedY;
 
 
 
-/* 
-This Function will be called 20 times/second. Each time it is called,
-it should move the Box to a new location. If the box drifts off the screen
-turn it around! 
-*/
 
-function update() {
-  moveBoxTo(positionX, positionY);
-  positionX = positionX + speed;
-          positionY = positionY + speedY;
-          if (positionX > boardWidth - 85){
-              speed = -speed;
-          }
-          if (positionX < 0){
-              speed = -speed;
-    speed = -speed;  
-              speed = -speed;
-          }
-          if (positionY > boardHeight - 85){
-              speedY = -speedY;
-          }
-          if (positionY < 0){
-              speedY = -speedY;
-          }
 
-};
+
 
   function endGame() {
     // stop the interval timer

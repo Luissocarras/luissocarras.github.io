@@ -37,3 +37,31 @@ body {
   left: 435px;
   top: 220px;
 }
+
+#centerLine{
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  border-left: 2px dashed wheat;
+  transform: translateX(-50%);
+}
+
+.points{
+position: absolute;
+font-size: large;
+color: darkgoldenrod;
+font-weight: bolder;
+transform: translateX(-50%);
+}
+
+#pointsLeft{
+  top: 10px;
+  left: 24.5%;
+}
+
+#pointsRight{
+  top: 10px;
+  left: 65.5%;
+}

@@ -15,6 +15,7 @@ function runProgram(){
 const PADDLE_HEIGHT = $("#leftPaddle").height();
 const BALL_HEIGHT = $("#ball").height();
 const BALL_WIDTH = $("#ball").width();
+const PADDLE_WIDTH = $("#leftPaddle").width();
   // Game Item Objects
 const KEY = {
 "W": 87,
@@ -63,7 +64,11 @@ var ball = GameItem("#ball", (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1
     updateGameItem(rightPaddle);
     drawGameItem(ball);
     updateGameItem(ball);
-wallcollision();
+ballColisionBT();
+ballColisionLR();
+paddleBoundries(leftPaddle);
+paddleBoundries(rightPaddle);
+paddleColisions();
   }
   
   /* 
@@ -98,21 +103,8 @@ if(event.which === KEY.DOWN){
   rightPaddle.speedY = 0;
 }
 } 
-function wallcollision(){
-  if(leftPaddle.y > BOARD_HEIGHT - PADDLE_HEIGHT || leftPaddle.y < 0   ){
-   leftPaddle.y-= leftPaddle.speedY;
-  }
-  if(rightPaddle.y > BOARD_HEIGHT - PADDLE_HEIGHT || rightPaddle.y < 0   ){
-    rightPaddle.y-= rightPaddle.speedY;
-   }
-   if(ball.y > BOARD_HEIGHT - BALL_HEIGHT || ball.y < 0   ){
-    ball.y-= ball.speedY;
-   }
-   if(ball.x > BOARD_WIDTH - BALL_WIDTH || ball.x < 0   ){
-    ball.x-= ball.speedX;
-   }
+
  
-}
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -122,7 +114,11 @@ function drawGameItem(obj){
 $(obj.id).css("left", obj.x);
 $(obj.id).css("top", obj.y);
 }
-  
+  function paddleBoundries(obj){
+if(obj.y < 0 || obj.y > BOARD_HEIGHT - PADDLE_HEIGHT){
+  obj.y -= obj.speedY;
+}
+  }
 function updateGameItem(obj){
 obj.x += obj.speedX;
 obj.y += obj.speedY;
@@ -134,9 +130,47 @@ obj.y += obj.speedY;
 //handle what happens when someone wins//
 //handles points//
 // handle reset of game//
+function paddleColisions(){
+  if(doCollide(ball, leftPaddle)){
+ball.speedX = -ball.speedX
+  }
+  if(doCollide(ball, rightPaddle)){
+    ball.speedX = -ball.speedX
+      }
+}
 
+function ballColisionLR(){
+  if(ball.x + BALL_WIDTH > BOARD_WIDTH){
+//score
 
+  }
+  if(ball.x + BALL_WIDTH < 0){
+    //pos reset
+    
+      }
+}
 
+function doCollide(obj1, obj2){
+if(
+  obj1.x + obj1.w > obj2.x &&
+  obj1.x < obj2.x + obj2.w &&
+  obj1.y + obj1.h > obj2.y &&
+  obj1.y < obj2.y + obj2.h 
+  
+){
+return true;
+}
+return false;
+}
+
+function ballColisionBT(){
+  if (ball.y < 0){
+ ball.speedY = -ball.speedY;
+  }  
+  if(ball.y + BALL_HEIGHT > BOARD_HEIGHT){
+    ball.speedY = -ball.speedY;
+  }
+ }
 
 
 

@@ -1,13 +1,13 @@
 
 body {
-  background-color: darkgreen;
+  background-color: royalblue;
 }
 
 #board {
   width: 900px;
   height: 500px;
-  border: 1px solid white;
-  background-color: black;
+  border: 1px solid wheat;
+  background-color: royalblue;
   position: relative;
 }
 .paddle {

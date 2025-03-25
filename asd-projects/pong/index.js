@@ -45,6 +45,9 @@ return objInstance;
 var leftPaddle = GameItem("#leftPaddle", 0 , 0);
 var rightPaddle = GameItem("#rightPaddle", 0 , 0);
 var ball = GameItem("#ball", (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1), (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1) );
+var pointsLeft = 0;
+var pointsRight = 0;
+$("#playAgain").hide();
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
@@ -64,11 +67,12 @@ var ball = GameItem("#ball", (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1
     updateGameItem(rightPaddle);
     drawGameItem(ball);
     updateGameItem(ball);
-ballColisionBT();
-ballColisionLR();
-paddleBoundries(leftPaddle);
-paddleBoundries(rightPaddle);
-paddleColisions();
+    ballColisionBT();
+    ballColisionLR();
+    paddleBoundries(leftPaddle);
+    paddleBoundries(rightPaddle);
+    paddleColisions();
+    detectGameEnd();
   }
   
   /* 
@@ -139,14 +143,26 @@ ball.speedX = -ball.speedX
       }
 }
 
+function reset(){
+  leftPaddle = GameItem("#leftPaddle", 0 , 0);
+ rightPaddle = GameItem("#rightPaddle", 0 , 0);
+ ball = GameItem("#ball", (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1), (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1) );
+ ball.x = BOARD_WIDTH /2;
+ ball.y = BOARD_HEIGHT /2;
+}
+
 function ballColisionLR(){
   if(ball.x + BALL_WIDTH > BOARD_WIDTH){
 //score
-
+pointsLeft++
+$("#leftPointValue").text(pointsLeft)
+reset();
   }
   if(ball.x + BALL_WIDTH < 0){
     //pos reset
-    
+    pointsRight++
+$("#rightPointValue").text(pointsRight)
+reset();
       }
 }
 
@@ -173,11 +189,21 @@ function ballColisionBT(){
  }
 
 
-
+function detectGameEnd(){
+  if(pointsLeft === 15 || pointsRight === 15 ){
+reset();
+endGame();
+  }
+}
+function playAgainButton(){
+  $("#playAgain").css("top", BOARD_HEIGHT / 2);
+  $("#playAgain").css("left", BOARD_WIDTH / 2 - $ ("#playAgain").width()/2);
+  $("#playAgain").show();
+}
 
   function endGame() {
     // stop the interval timer
-    clearInterval(interval);
+    playAgainButton();
 
     // turn off event handlers
     $(document).off();

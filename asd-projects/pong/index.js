@@ -156,14 +156,18 @@ function ballColisionLR(){
 //score
 pointsLeft++
 $("#leftPointValue").text(pointsLeft)
+ball.speedX++
 reset();
   }
   if(ball.x + BALL_WIDTH < 0){
     //pos reset
     pointsRight++
 $("#rightPointValue").text(pointsRight)
+ball.speedX++
 reset();
+
       }
+      
 }
 
 function doCollide(obj1, obj2){

@@ -1,6 +1,6 @@
 
 body {
-  background-color: royalblue;
+  background-color: darkslategray;
 }
 
 #board {
@@ -9,9 +9,11 @@ body {
   border: 1px solid wheat;
   background-color: royalblue;
   position: relative;
+  margin: auto;
+  top: 200px;
 }
 .paddle {
-  background-color: teal;
+ background-image: linear-gradient(#fff00f, black);
   width: 25px;
   height: 120px;
   border-radius: 15px;
@@ -29,7 +31,7 @@ body {
 }
 
 #ball {
-  background-color: aliceblue;
+  background-image: linear-gradient(aliceblue, #a2d2ff);
   width: 30px;
   height: 20px;
   border-radius: 50px;
@@ -49,6 +51,7 @@ body {
 }
 
 .points{
+  background-image: linear-gradient(gainsboro, #a2d2ff);
 position: absolute;
 font-size: large;
 color: darkgoldenrod;
@@ -64,4 +67,16 @@ transform: translateX(-50%);
 #pointsRight{
   top: 10px;
   left: 65.5%;
+}
+
+#playAgain{
+ margin: auto;
+ position: absolute;
+ text-align: center;
+ border-radius: 10px;
+ padding: 4px;
+ background-color: blanchedalmond;
+}
+#playAgain:hover{
+  background-color: darkslategray;
 }

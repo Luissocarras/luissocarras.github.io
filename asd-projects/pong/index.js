@@ -80,16 +80,16 @@ $("#playAgain").hide();
   */
   function handleKeyDown(event) {
 if(event.which === KEY.W){
-leftPaddle.speedY = -5;
+leftPaddle.speedY = -20;
 }
 if(event.which === KEY.S){
-  leftPaddle.speedY = 5;
+  leftPaddle.speedY = 20;
   }
   if(event.which === KEY.UP){
-    rightPaddle.speedY = -5;
+    rightPaddle.speedY = -20;
     }
     if(event.which === KEY.DOWN){
-      rightPaddle.speedY = 5;
+      rightPaddle.speedY = 20;
       }
   }
   
@@ -137,10 +137,25 @@ obj.y += obj.speedY;
 function paddleColisions(){
   if(doCollide(ball, leftPaddle)){
 ball.speedX = -ball.speedX
+speedBall();
   }
   if(doCollide(ball, rightPaddle)){
     ball.speedX = -ball.speedX
+    speedBall();
       }
+}
+
+function speedBall(){
+  if(ball.speedX < 0){
+    ball.speedX -= 1;
+ }else{
+  ball.speedX += 1;
+ }
+ if(ball.speedY < 0){
+  ball.speedY -= 1;
+}else{
+ball.speedY += 1;
+}
 }
 
 function reset(){

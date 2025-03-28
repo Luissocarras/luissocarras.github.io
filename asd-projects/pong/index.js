@@ -201,9 +201,11 @@ return false;
 function ballColisionBT(){
   if (ball.y < 0){
  ball.speedY = -ball.speedY;
+ speedBall();
   }  
   if(ball.y + BALL_HEIGHT > BOARD_HEIGHT){
     ball.speedY = -ball.speedY;
+    speedBall();
   }
  }
 

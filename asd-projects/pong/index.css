@@ -1,19 +1,20 @@
 
 body {
-  background-color: darkslategray;
+  background-image: radial-gradient(darkslategray, #a2d2ff);
 }
 
 #board {
   width: 900px;
   height: 500px;
   border: 1px solid wheat;
-  background-color: royalblue;
+  background-image: radial-gradient(royalblue, #a2d2ff);
+  box-shadow: 30px 30px 70px orangered;
   position: relative;
   margin: auto;
   top: 200px;
 }
 .paddle {
- background-image: linear-gradient(#fff00f, black);
+ background-image: linear-gradient(white,blue);
   width: 25px;
   height: 120px;
   border-radius: 15px;

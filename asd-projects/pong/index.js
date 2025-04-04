@@ -147,14 +147,14 @@ speedBall();
 
 function speedBall(){
   if(ball.speedX < 0){
-    ball.speedX -= 1;
+    ball.speedX -= 1.5;
  }else{
-  ball.speedX += 1;
+  ball.speedX += 1.5;
  }
  if(ball.speedY < 0){
-  ball.speedY -= 1;
+  ball.speedY -= 1.5;
 }else{
-ball.speedY += 1;
+ball.speedY += 1.5;
 }
 }
 
